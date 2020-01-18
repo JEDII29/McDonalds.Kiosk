@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Idle" Height="450" Width="800">
+    
     <Grid>
-        
+        <Button Width="500" Height="250" Content="Start" Command="{Binding OpenSessionCommand}"/>
     </Grid>
 </Window>

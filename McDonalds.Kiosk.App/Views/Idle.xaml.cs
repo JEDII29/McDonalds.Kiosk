@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using McDonalds.Kiosk.App.ViewModels;
+using System.Windows;
 
 namespace McDonalds.Kiosk.App.Views
 {
@@ -7,9 +8,11 @@ namespace McDonalds.Kiosk.App.Views
     /// </summary>
     public partial class Idle : Window
     {
-        public Idle()
+        public Idle(IdleViewModel idleViewModel)
         {
             InitializeComponent();
+
+            DataContext = idleViewModel;
         }
     }
 }

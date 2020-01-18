@@ -1,4 +1,7 @@
-﻿using McDonalds.Kiosk.App.Views;
+﻿using McDonalds.Kiosk.App.Commands;
+using McDonalds.Kiosk.App.ViewModels;
+using McDonalds.Kiosk.App.Views;
+using McDonalds.Kiosk.Utilities.Contracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
@@ -21,14 +24,25 @@ namespace McDonalds.Kiosk.App
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
-            var startWindow = new Idle();
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var startWindow = serviceProvider.GetRequiredService<Idle>();
             startWindow.Show();
         }
 
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<SessionKeeper>();
-            services.AddTransient<SessionManager>();
+            services.AddTransient<ISessionManager, SessionManager>();
+
+            // Commands
+            services.AddTransient<OpenSessionCommand>();
+
+            // ViewModels
+            services.AddTransient<IdleViewModel>();
+
+            // Views
+            services.AddTransient<Idle>();
         }
     }
 }
