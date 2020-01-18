@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Contracts\IOffertManageable.cs" />
+    <Compile Remove="ProductManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Database1.mdf" />
+    <None Remove="Database1_log.ldf" />
+    <None Remove="Models\NewFile1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Database\McDonaldOffer.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
