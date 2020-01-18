@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using McDonalds.Kiosk.Utilities.Contracts;
-using McDonalds.Kiosk.Utilities.Models;
+﻿using System.Collections.Generic;
 
 namespace McDonalds.Kiosk.Utilities.Models
 {

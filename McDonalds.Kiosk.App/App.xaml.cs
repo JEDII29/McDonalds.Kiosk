@@ -1,7 +1,9 @@
 ﻿using McDonalds.Kiosk.App.Commands;
 using McDonalds.Kiosk.App.ViewModels;
 using McDonalds.Kiosk.App.Views;
+using McDonalds.Kiosk.DatabaseContext;
 using McDonalds.Kiosk.Utilities.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
@@ -32,6 +34,10 @@ namespace McDonalds.Kiosk.App
 
         private void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = _configuration.GetConnectionString("MySqlDatabaseConnectionString");
+            services.AddDbContext<KioskMySqlContext>(optionsBuilder =>
+                optionsBuilder.UseMySql(connectionString), ServiceLifetime.Transient);
+
             services.AddSingleton<SessionKeeper>();
             services.AddTransient<ISessionManager, SessionManager>();
 
