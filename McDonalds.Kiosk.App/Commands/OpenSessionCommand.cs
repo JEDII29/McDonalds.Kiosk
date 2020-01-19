@@ -1,4 +1,4 @@
-﻿using McDonalds.Kiosk.Utilities.Contracts;
+﻿using McDonalds.Kiosk.Core.Contracts;
 using System;
 using System.Windows.Input;
 

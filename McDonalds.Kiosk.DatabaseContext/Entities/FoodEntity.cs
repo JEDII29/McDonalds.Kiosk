@@ -1,4 +1,4 @@
-﻿using McDonalds.Kiosk.Utilities.Enums;
+﻿using McDonalds.Kiosk.Core.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

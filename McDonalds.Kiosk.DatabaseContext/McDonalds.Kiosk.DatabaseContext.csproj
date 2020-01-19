@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\McDonalds.Kiosk.Utilities\McDonalds.Kiosk.Utilities.csproj" />
+    <ProjectReference Include="..\McDonalds.Kiosk.Utilities\McDonalds.Kiosk.Core.csproj" />
   </ItemGroup>
 
 </Project>

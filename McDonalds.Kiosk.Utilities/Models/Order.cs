@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace McDonalds.Kiosk.Utilities.Models
+namespace McDonalds.Kiosk.Core.Models
 {
     public class Order
     {

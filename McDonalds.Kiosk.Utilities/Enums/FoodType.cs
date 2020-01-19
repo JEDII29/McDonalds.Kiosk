@@ -1,4 +1,4 @@
-﻿namespace McDonalds.Kiosk.Utilities.Enums
+﻿namespace McDonalds.Kiosk.Core.Enums
 {
     public enum FoodType
     {

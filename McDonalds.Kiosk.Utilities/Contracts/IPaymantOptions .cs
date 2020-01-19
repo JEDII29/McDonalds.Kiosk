@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace McDonalds.Kiosk.Utilities.Contracts
+﻿namespace McDonalds.Kiosk.Core.Contracts
 {
     public interface IPaymantOptions
     {

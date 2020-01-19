@@ -2,11 +2,12 @@
 using McDonalds.Kiosk.App.ViewModels;
 using McDonalds.Kiosk.App.Views;
 using McDonalds.Kiosk.DatabaseContext;
-using McDonalds.Kiosk.Utilities.Contracts;
+using McDonalds.Kiosk.Core.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using McDonalds.Kiosk.Core;
 
 namespace McDonalds.Kiosk.App
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace McDonalds.Kiosk.Utilities.Models
+namespace McDonalds.Kiosk.Core.Models
 {
     public class Session
     {

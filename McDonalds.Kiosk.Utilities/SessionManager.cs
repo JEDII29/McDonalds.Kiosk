@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using McDonalds.Kiosk.Utilities.Contracts;
-using McDonalds.Kiosk.Utilities.Models;
+﻿using McDonalds.Kiosk.Core.Contracts;
+using McDonalds.Kiosk.Core.Models;
 
-namespace McDonalds.Kiosk.App
+namespace McDonalds.Kiosk.Core
 {
     public class SessionManager : ISessionManager
     {

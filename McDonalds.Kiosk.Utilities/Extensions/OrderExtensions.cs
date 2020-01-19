@@ -1,10 +1,8 @@
-﻿using McDonalds.Kiosk.Utilities.Models;
-using System;
+﻿using McDonalds.Kiosk.Core.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace McDonalds.Kiosk.Utilities.Extensions
+namespace McDonalds.Kiosk.Core.Extensions
 {
     public static class OrderExtensions
     {

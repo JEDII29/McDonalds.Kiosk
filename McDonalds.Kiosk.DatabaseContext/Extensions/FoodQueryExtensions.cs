@@ -1,5 +1,5 @@
-﻿using McDonalds.Kiosk.DatabaseContext.Entities;
-using McDonalds.Kiosk.Utilities.Enums;
+﻿using McDonalds.Kiosk.Core.Enums;
+using McDonalds.Kiosk.DatabaseContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
