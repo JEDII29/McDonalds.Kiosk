@@ -1,0 +1,41 @@
+﻿<Page x:Class="McDonalds.Kiosk.App.Views.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:McDonalds.Kiosk.App.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="MainWindow">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="White">
+            <Button Content="Burgery" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="35" Width="74"
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetBurgers"/>
+            <Button Content="Dodatki" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Height="35" Width="74"
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetSides"/>
+            <Button Content="Wrapy" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Height="35" Width="74"
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetWraps"/>
+            <Button Content="Zimne napoje" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Height="35"
+                    Width="74" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetColdDrinks"/>
+            <Button Content="Gorące napoje" Margin="20,230,0,0" VerticalAlignment="Top" Height="35"
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetHotDrinks" HorizontalAlignment="Left" Width="74"/>
+        </Grid>
+
+        <ListView Name="LstProducts" Initialized="LstProduct_Initialized">
+
+            <ListView.View>
+                <GridView >
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>
