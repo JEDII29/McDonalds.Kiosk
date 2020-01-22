@@ -1,25 +1,11 @@
 ﻿using McDonalds.Kiosk.DatabaseContext;
 using McDonalds.Kiosk.DatabaseContext.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace McDonalds.Kiosk.App.Views.Pages
 {
-    public class ProductItem
-    {
-        public ProductItem(string name, double price)
-        {
-            Name = name;
-            Price = price;
-        }
-
-        public string Name { get; }
-        public double Price { get; }
-    }
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -52,7 +38,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
         {
             var coldDrinks = _dbContext.Drinks.GetColdDrinks().ToList();
             LstProducts.Items.Clear();
-            coldDrinks.ForEach(x => LstProducts.Items.Add(new ProductItem(x.Name, x.Price)));
+            coldDrinks.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
         }
 
         private void GetHotDrinks(object sender, RoutedEventArgs e)
