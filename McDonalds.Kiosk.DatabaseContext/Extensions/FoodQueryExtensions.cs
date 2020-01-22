@@ -9,15 +9,14 @@ namespace McDonalds.Kiosk.DatabaseContext.Extensions
 {
     public static class FoodQueryExtensions
     {
-        public static async Task<IEnumerable<FoodEntity>> GetBurgers(this IQueryable<FoodEntity> foodEntity)
-            => await foodEntity.Where(r => r.FoodType == FoodType.Burger).ToListAsync();
+        public static IEnumerable<FoodEntity> GetBurgers(this IQueryable<FoodEntity> foodEntity)
+            => foodEntity.Where(r => r.FoodType == FoodType.Burger);
 
-        public static async Task<IEnumerable<FoodEntity>> GetWraps(this IQueryable<FoodEntity> foodEntity)
-            => await foodEntity.Where(r => r.FoodType == FoodType.Wrap).ToListAsync();
+        public static IEnumerable<FoodEntity> GetWraps(this IQueryable<FoodEntity> foodEntity)
+            => foodEntity.Where(r => r.FoodType == FoodType.Wrap);
 
-        public static async Task<IEnumerable<FoodEntity>> GetSides(this IQueryable<FoodEntity> foodEntity)
-            => await foodEntity
-            .Where(r => r.FoodType == FoodType.Chips || r.FoodType == FoodType.Salad)
-            .ToListAsync();
+        public static IEnumerable<FoodEntity> GetSides(this IQueryable<FoodEntity> foodEntity)
+            => foodEntity
+            .Where(r => r.FoodType == FoodType.Chips || r.FoodType == FoodType.Salad);
     }
 }
