@@ -1,14 +1,12 @@
-﻿using McDonalds.Kiosk.App.Commands;
-using McDonalds.Kiosk.App.ViewModels;
-using McDonalds.Kiosk.App.Views;
-using McDonalds.Kiosk.DatabaseContext;
+﻿using McDonalds.Kiosk.App.Views.Pages;
+using McDonalds.Kiosk.App.Views.Windows;
+using McDonalds.Kiosk.Core;
 using McDonalds.Kiosk.Core.Contracts;
+using McDonalds.Kiosk.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using McDonalds.Kiosk.Core;
-using System.Threading.Tasks;
 
 namespace McDonalds.Kiosk.App
 {
@@ -18,9 +16,6 @@ namespace McDonalds.Kiosk.App
     public partial class App : Application
     {
         private IConfiguration _configuration;
-
-        
-
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -33,9 +28,11 @@ namespace McDonalds.Kiosk.App
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var startWindow = serviceProvider.GetRequiredService<Idle>();
-            startWindow.Show();
+            var startWindow = serviceProvider.GetRequiredService<MainWindow>();
+            var idlePage = serviceProvider.GetRequiredService<Idle>();
 
+            startWindow.MainWindowContent.Navigate(idlePage);
+            startWindow.Show();
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -47,16 +44,10 @@ namespace McDonalds.Kiosk.App
             services.AddSingleton<SessionKeeper>();
             services.AddTransient<ISessionManager, SessionManager>();
 
-            // Commands
-            services.AddTransient<OpenSessionCommand>();
-
-            // ViewModels
-            services.AddTransient<IdleViewModel>();
-
             // Views
-            services.AddTransient<Idle>();
             services.AddTransient<MainWindow>();
-
+            services.AddTransient<Idle>();
+            services.AddTransient<DuringOrder>();
         }
     }
 }

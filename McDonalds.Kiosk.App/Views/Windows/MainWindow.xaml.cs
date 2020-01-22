@@ -8,17 +8,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace McDonalds.Kiosk.App.Views
+namespace McDonalds.Kiosk.App.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for OrderList.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class OrderList : Page
+    public partial class MainWindow : Window
     {
-        public OrderList()
+        public MainWindow()
         {
             InitializeComponent();
         }

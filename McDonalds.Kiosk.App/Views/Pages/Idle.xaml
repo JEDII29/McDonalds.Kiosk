@@ -1,0 +1,11 @@
+﻿<Page x:Class="McDonalds.Kiosk.App.Views.Pages.Idle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
+
+    <Grid Background="Azure">
+        <Button x:Name="idle" Width="200" Height="130" Content="Start" FontSize="50" BorderThickness="6" BorderBrush="Green" Background="DarkSeaGreen" Margin="0,200,0,0" Click="OpenSession_Click" />
+    </Grid>
+</Page>
