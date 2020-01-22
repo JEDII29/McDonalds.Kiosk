@@ -9,12 +9,10 @@ namespace McDonalds.Kiosk.DatabaseContext.Extensions
 {
     public static class DrinkQueryExtensions
     {
-        public static async Task<IEnumerable<DrinkEntity>> GetHotDrinks(this IQueryable<DrinkEntity> drinkEntity,
-            CancellationToken cancellationToken = default)
-            => await drinkEntity.Where(r => r.IsHot).ToListAsync(cancellationToken);
+        public static IEnumerable<DrinkEntity> GetHotDrinks(this IQueryable<DrinkEntity> drinkEntity)
+            => drinkEntity.Where(r => r.IsHot);
 
-        public static async Task<IEnumerable<DrinkEntity>> GetColdDrinks(this IQueryable<DrinkEntity> drinkEntity,
-            CancellationToken cancellationToken = default)
-            => await drinkEntity.Where(r => !r.IsHot).ToListAsync(cancellationToken);
+        public static IEnumerable<DrinkEntity> GetColdDrinks(this IQueryable<DrinkEntity> drinkEntity)
+            => drinkEntity.Where(r => !r.IsHot);
     }
 }
