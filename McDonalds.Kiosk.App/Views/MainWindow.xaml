@@ -14,9 +14,9 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="White">
+        <Grid Grid.Column="0" Background="LightBlue">
             <Button Content="Burgery" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="35" Width="74"
-                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetBurgers"/>
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="getBurgers"/>
             <Button Content="Dodatki" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Height="35" Width="74"
                     BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetSides"/>
             <Button Content="Wrapy" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Height="35" Width="74"
@@ -25,17 +25,31 @@
                     Width="74" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetColdDrinks"/>
             <Button Content="Gorące napoje" Margin="20,230,0,0" VerticalAlignment="Top" Height="35"
                     BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetHotDrinks" HorizontalAlignment="Left" Width="74"/>
+
         </Grid>
 
-        <ListView Name="LstProducts" Initialized="LstProduct_Initialized">
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
 
-            <ListView.View>
-                <GridView >
+            <Grid Grid.Row="0" Background="LightBlue">
+                <ListView Name="LstProducts" Initialized="LstProduct_Initialized" Margin="10,10,10,10">
 
+                    <ListView.View>
+                        <GridView >
 
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="Aquamarine">
+                <Label Content="{Binding }"  Height="20"  Margin="34,50,34,0" Name="lblTimer" FontSize="10" Width="50" FontFamily="Courier New" VerticalContentAlignment="Center" />
+            </Grid>
+        </Grid>
+
 
     </Grid>
 </Page>

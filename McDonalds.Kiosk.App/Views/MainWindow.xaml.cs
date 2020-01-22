@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using McDonalds.Kiosk.Core.Models;
+using McDonalds.Kiosk.DatabaseContext.Extensions;
 
 namespace McDonalds.Kiosk.App.Views
 {
@@ -19,6 +20,7 @@ namespace McDonalds.Kiosk.App.Views
     /// </summary>
     public partial class MainWindow : Page
     {
+        
         List<Product> lstProductsInOffer = new List<Product>();
         public MainWindow()
         {
@@ -27,12 +29,12 @@ namespace McDonalds.Kiosk.App.Views
 
         private void LstProduct_Initialized(object sender, EventArgs e)
         {
-            LstProducts.ItemsSource = lstProductsInOffer;
+            //LstProducts.ItemsSource = lstProductsInOffer;
         }
 
-        private void GetBurgers(object sender, RoutedEventArgs e)
+        private void getBurgers(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void GetSides(object sender, RoutedEventArgs e)

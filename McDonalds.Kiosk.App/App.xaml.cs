@@ -31,6 +31,7 @@ namespace McDonalds.Kiosk.App
 
             var startWindow = serviceProvider.GetRequiredService<Idle>();
             startWindow.Show();
+
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -50,6 +51,8 @@ namespace McDonalds.Kiosk.App
 
             // Views
             services.AddTransient<Idle>();
+            services.AddTransient<MainWindow>();
+
         }
     }
 }

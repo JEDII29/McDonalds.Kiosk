@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Idle" Height="450" Width="800">
+        Title="Idle" Height="450" Width="400">
     
     <Grid>
-        <Button Width="500" Height="250" Content="Start" Command="{Binding OpenSessionCommand}"/>
+        <Button x:Name="idle" Width="200" Height="130" Content="Start" FontSize="50" BorderThickness="6" BorderBrush="Green" Background="DarkSeaGreen" Command="{Binding OpenSessionCommand}" Click="Button_Click" Margin="100,217,100,67"/>
     </Grid>
 </Window>

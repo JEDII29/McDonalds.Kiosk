@@ -14,7 +14,10 @@ namespace McDonalds.Kiosk.Core
 
         //TODO: add logs
         public void Open()
-            => _session.Session = new Session();
+        {
+            _session.Session = new Session();
+            
+        }
 
         //TODO: add logs
         public void Close()
