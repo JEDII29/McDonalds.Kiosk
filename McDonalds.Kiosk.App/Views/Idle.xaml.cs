@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
+
 namespace McDonalds.Kiosk.App.Views
 {
     /// <summary>
@@ -12,17 +13,16 @@ namespace McDonalds.Kiosk.App.Views
     {
         private readonly MainWindow _mainWindow;
 
-        public Idle(IdleViewModel idleViewModel)
+        public Idle(IdleViewModel idleViewModel, MainWindow mainWindow)
         {
             InitializeComponent();
-
+            _mainWindow = mainWindow;
             DataContext = idleViewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            _mainWindow.NavigationService.Navigate(_mainWindow);
-            
-        }
+        //private void idle_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _mainWindow.NavigationService.Navigate(_mainWindow);
+        //}
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using McDonalds.Kiosk.Core;
+using System.Threading.Tasks;
 
 namespace McDonalds.Kiosk.App
 {
@@ -17,6 +18,9 @@ namespace McDonalds.Kiosk.App
     public partial class App : Application
     {
         private IConfiguration _configuration;
+
+        
+
 
         protected override void OnStartup(StartupEventArgs e)
         {
