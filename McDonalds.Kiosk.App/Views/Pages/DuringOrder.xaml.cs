@@ -1,26 +1,36 @@
-﻿using McDonalds.Kiosk.Core.Models;
+﻿using McDonalds.Kiosk.DatabaseContext;
+using McDonalds.Kiosk.DatabaseContext.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace McDonalds.Kiosk.App.Views.Pages
 {
+    public class ProductItem
+    {
+        public ProductItem(string name, double price)
+        {
+            Name = name;
+            Price = price;
+        }
+
+        public string Name { get; }
+        public double Price { get; }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class DuringOrder : Page
     {
+        private readonly KioskMySqlContext _dbContext;
 
-        List<Product> lstProductsInOffer = new List<Product>();
-        public DuringOrder()
+        public DuringOrder(KioskMySqlContext dbContext)
         {
             InitializeComponent();
-        }
-
-        private void LstProduct_Initialized(object sender, EventArgs e)
-        {
-            //LstProducts.ItemsSource = lstProductsInOffer;
+            _dbContext = dbContext;
         }
 
         private void getBurgers(object sender, RoutedEventArgs e)
@@ -40,7 +50,9 @@ namespace McDonalds.Kiosk.App.Views.Pages
 
         private void GetColdDrinks(object sender, RoutedEventArgs e)
         {
-
+            var coldDrinks = _dbContext.Drinks.GetColdDrinks().ToList();
+            LstProducts.Items.Clear();
+            coldDrinks.ForEach(x => LstProducts.Items.Add(new ProductItem(x.Name, x.Price)));
         }
 
         private void GetHotDrinks(object sender, RoutedEventArgs e)
