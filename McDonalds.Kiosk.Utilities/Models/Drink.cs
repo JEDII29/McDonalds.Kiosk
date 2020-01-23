@@ -2,6 +2,6 @@
 {
     public abstract class Drink : Product
     {
-        public int AmountInMilliliters { get; set; }
+        
     }
 }

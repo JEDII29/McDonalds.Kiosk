@@ -4,7 +4,7 @@ using System.Text;
 
 namespace McDonalds.Kiosk.Core.Models
 {
-    public class Food : Product
+    public class Foodd : Product
     {
     }
 }

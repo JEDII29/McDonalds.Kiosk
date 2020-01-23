@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using McDonalds.Kiosk.Core.Extensions;
+using McDonalds.Kiosk.DatabaseContext.Entities;
+using System;
 
 namespace McDonalds.Kiosk.App.Views.Pages
 {
@@ -20,7 +23,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
         private readonly OrderList _orderlist;
         private readonly SessionKeeper _sessionKeeper;
         
-
+        
 
         public DuringOrder(KioskMySqlContext dbContext, ISessionManager sessionManager, OrderList orderList, SessionKeeper sessionKeeper)
         {
@@ -80,12 +83,37 @@ namespace McDonalds.Kiosk.App.Views.Pages
 
         private void Add(object sender, RoutedEventArgs e)
         {
-            //   var a = (((IEnumerable<Food>)this.LstProducts.SelectedItem.ToString.).ToList());
-            //Food a = new Food()
-            //    a.Name = LstProducts.SelectedItem.
-            //LstProducts.SelectedItem
+            if(LstProducts.SelectedItem != null)
+            {
+                Foodd foodd = new Foodd();
+                string name = "", pricetxt = "";
+                double price;
+                string a = LstProducts.SelectedItem.ToString();
+                for (int i = 9; i < 32; i++)
+                {
+                    if (a[i] == ',')
+                        break;
+                    name += a[i];
+                }
+                for (int i = a.Length - 3; i > 0; i--)
+                {
+                    if (a[i] == ' ')
+                        break;
+                    pricetxt = a[i] + pricetxt;
+                }
 
-           // _sessionKeeper.Session.Order.Products.AddRange
+                foodd.Name = name;
+                foodd.Price = Convert.ToDouble(pricetxt);
+                _sessionKeeper.Session.Order.Products.Add(foodd);
+                TotalCost.Text = _sessionKeeper.Session.Order.Products.GetTotalCost().ToString();
+            }
+
         }
+        
+        private void TotalCost_Initialized(object sender, System.EventArgs e)
+        {
+                TotalCost.Text = "0";
+        }
+        
     }
 }

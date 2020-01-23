@@ -17,7 +17,7 @@
             <ListView Name="LstProducts" ItemsSource="{Binding}" Initialized="LstProducts_Initialized" Margin="30,10,30,10" BorderBrush="Green" BorderThickness="3">
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}"/>
                     </GridView>
                 </ListView.View>
