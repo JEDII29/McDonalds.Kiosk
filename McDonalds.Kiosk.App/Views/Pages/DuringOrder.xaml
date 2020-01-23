@@ -15,7 +15,7 @@
 
         <Grid Grid.Column="0" Background="Azure">
             <Button Content="Burgery" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="35" Width="74"
-                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="getBurgers"/>
+                    BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetBurgers"/>
             <Button Content="Dodatki" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Height="35" Width="74"
                     BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GetSides"/>
             <Button Content="Wrapy" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Height="35" Width="74"
@@ -53,11 +53,7 @@
                 <Button Content="Dodaj" Margin="0,15,0,0" VerticalAlignment="Top" Height="35"
                     BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="Add" HorizontalAlignment="Center" Width="74"/>
                 <TextBox HorizontalAlignment="Right" Initialized="TotalCost_Initialized" Name="TotalCost"  Margin="143,60,15,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"></TextBox>
-
             </Grid>
         </Grid>
-
-
-
     </Grid>
 </Page>

@@ -4,11 +4,11 @@ namespace McDonalds.Kiosk.Core.Models
 {
     public class Order
     {
-        public List<int> ProductsIds { get; }
+        public List<Product> Products { get; }
 
         public Order()
         {
-            ProductsIds = new List<int>();
+            Products = new List<Product>();
         }
     }
 }

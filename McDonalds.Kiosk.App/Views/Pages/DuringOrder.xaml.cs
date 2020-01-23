@@ -19,21 +19,25 @@ namespace McDonalds.Kiosk.App.Views.Pages
     public partial class DuringOrder : Page
     {
         private readonly KioskMySqlContext _dbContext;
+        private readonly SessionKeeper _sessionKeeper;
         private readonly ISessionManager _sessionManager;
         private readonly OrderList _orderlist;
-        private readonly SessionKeeper _sessionKeeper;
-        
-        public DuringOrder(KioskMySqlContext dbContext, 
-            ISessionManager sessionManager, OrderList orderList, SessionKeeper sessionKeeper)
+
+        public DuringOrder(
+            KioskMySqlContext dbContext,
+            SessionKeeper sessionKeeper,
+            ISessionManager sessionManager,
+            OrderList orderListView)
         {
-            InitializeComponent();
             _dbContext = dbContext;
             _sessionManager = sessionManager;
-            _orderlist = orderList;
+            _orderlist = orderListView;
             _sessionKeeper = sessionKeeper;
+
+            InitializeComponent();
         }
 
-        private void getBurgers(object sender, RoutedEventArgs e)
+        private void GetBurgers(object sender, RoutedEventArgs e)
         {
             var burgers = _dbContext.Food.GetBurgers().ToList();
             LstProducts.Items.Clear();
@@ -71,25 +75,26 @@ namespace McDonalds.Kiosk.App.Views.Pages
         private void Cancel(object sender, RoutedEventArgs e)
         {
             _sessionManager.Close();
-            this.NavigationService.GoBack();
+            NavigationService.GoBack();
         }
 
         private void GoToCart(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(_orderlist);
-        }
+            => NavigationService.Navigate(_orderlist);
 
 
         private void Add(object sender, RoutedEventArgs e)
         {
-           
+            var selectedProduct = (Product)LstProducts.SelectedItem;
+            if (selectedProduct is null)
+                return;
 
+            var products = _sessionKeeper.Session.Order.Products;
+            products.Add(selectedProduct);
+
+            TotalCost.Text = products.GetTotalCost().ToString();
         }
-        
+
         private void TotalCost_Initialized(object sender, System.EventArgs e)
-        {
-                TotalCost.Text = "0";
-        }
-        
+            => TotalCost.Text = "0";
     }
 }
