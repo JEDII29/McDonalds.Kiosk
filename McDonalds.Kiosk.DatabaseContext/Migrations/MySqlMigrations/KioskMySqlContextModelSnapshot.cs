@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace McDonalds.Kiosk.DatabaseContext.MySqlMigrations
+namespace McDonalds.Kiosk.DatabaseContext.Migrations.MySqlMigrations
 {
     [DbContext(typeof(KioskMySqlContext))]
     partial class KioskMySqlContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,6 @@ namespace McDonalds.Kiosk.DatabaseContext.MySqlMigrations
             modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.DrinkEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("AmountInMilliliters")
@@ -42,7 +41,6 @@ namespace McDonalds.Kiosk.DatabaseContext.MySqlMigrations
             modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.FoodEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("FoodSize")
@@ -62,6 +60,35 @@ namespace McDonalds.Kiosk.DatabaseContext.MySqlMigrations
                     b.HasKey("Id");
 
                     b.ToTable("Food");
+                });
+
+            modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.ProductIdEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductId");
+                });
+
+            modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.DrinkEntity", b =>
+                {
+                    b.HasOne("McDonalds.Kiosk.DatabaseContext.Entities.ProductIdEntity", "ProductId")
+                        .WithMany("Drinks")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.FoodEntity", b =>
+                {
+                    b.HasOne("McDonalds.Kiosk.DatabaseContext.Entities.ProductIdEntity", "ProductId")
+                        .WithMany("Food")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

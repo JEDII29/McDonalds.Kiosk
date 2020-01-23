@@ -21,6 +21,6 @@ namespace McDonalds.Kiosk.DatabaseContext.Entities
         public double Price { get; set; }
 
         [ForeignKey("Id")]
-        public ProductIdEntity ProductId { get; set; }
+        public virtual ProductIdEntity ProductId { get; set; }
     }
 }
