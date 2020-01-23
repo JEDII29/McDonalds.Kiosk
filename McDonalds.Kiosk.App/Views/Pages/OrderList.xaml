@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row ="0">
-            <ListView Name="LstProducts" ItemsSource="{Binding}" Initialized="LstProducts_Initialized" Margin="30,10,30,10" BorderBrush="Green" BorderThickness="3">
+            <ListView Name="LstProducts" ItemsSource="{Binding}" Margin="30,10,30,10" BorderBrush="Green" BorderThickness="3">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Nazwa" Width="120" DisplayMemberBinding="{Binding Name}"/>
@@ -30,8 +30,6 @@
             Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="EndAndPay" />
             <Button Content="Powrót do sklepu" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="180,20,0,0" VerticalAlignment="Center" Height="35"
             Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GoToShop" />
-            <Button Content="Odśwież" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="0,2,0,0" VerticalAlignment="Top" Height="36"
-                Width="60" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="Refresh" />
         </Grid>
 
     </Grid>

@@ -82,7 +82,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
             => NavigationService.Navigate(_orderlist);
 
 
-        private void Add(object sender, RoutedEventArgs e)
+        private void AddProductToOrder(object sender, RoutedEventArgs e)
         {
             var selectedProduct = (Product)LstProducts.SelectedItem;
             if (selectedProduct is null)

@@ -19,17 +19,20 @@ namespace McDonalds.Kiosk.App.Views.Pages
             InitializeComponent();
             _sessionKeeper = sessionKeeper;
             _sessionManager = sessionManager;
+
+            InitalizeOrder();
         }
 
-
-
-        private void LstProducts_Initialized(object sender, System.EventArgs e)
+        private void InitalizeOrder()
         {
-            LstProducts.Items.Clear();
-            if(_sessionKeeper != null)
-            _sessionKeeper.Session.Order.Products.ForEach(x => LstProducts.Items.Add(new{x.Name,x.Price}));
-        }
+            if (_sessionKeeper.Session is null)
+                return;
 
+            LstProducts.Items.Clear();
+
+            var productsInOrder = _sessionKeeper.Session.Order.Products;
+            productsInOrder.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
+        }
 
         private void EndAndPay(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -46,15 +49,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
         }
 
         private void GoToShop(object sender, System.Windows.RoutedEventArgs e)
-        {
-            this.NavigationService.GoBack();
-        }
+           => NavigationService.GoBack();
 
-        private void Refresh(object sender, System.EventArgs e)
-        {
-            LstProducts.Items.Clear();
-            if (_sessionKeeper != null)
-                _sessionKeeper.Session.Order.Products.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
-        }
     }
 }
