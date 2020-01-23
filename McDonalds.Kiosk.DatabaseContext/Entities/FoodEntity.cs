@@ -8,7 +8,6 @@ namespace McDonalds.Kiosk.DatabaseContext.Entities
     public class FoodEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -20,5 +19,8 @@ namespace McDonalds.Kiosk.DatabaseContext.Entities
         public FoodSize FoodSize { get; set; }
 
         public double Price { get; set; }
+
+        [ForeignKey("Id")]
+        public ProductIdEntity ProductId { get; set; }
     }
 }

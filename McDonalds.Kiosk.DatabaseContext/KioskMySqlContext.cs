@@ -11,5 +11,6 @@ namespace McDonalds.Kiosk.DatabaseContext
 
         public DbSet<FoodEntity> Food { get; set; }
         public DbSet<DrinkEntity> Drinks { get; set; }
+        public DbSet<ProductIdEntity> ProductsIds { get; set; }
     }
 }

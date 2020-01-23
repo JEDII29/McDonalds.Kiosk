@@ -87,7 +87,6 @@ namespace McDonalds.Kiosk.App.Views.Pages
             {
                 Foodd foodd = new Foodd();
                 string name = "", pricetxt = "";
-                double price;
                 string a = LstProducts.SelectedItem.ToString();
                 for (int i = 9; i < 32; i++)
                 {

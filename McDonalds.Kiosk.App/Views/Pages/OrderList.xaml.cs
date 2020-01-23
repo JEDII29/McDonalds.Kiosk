@@ -49,5 +49,12 @@ namespace McDonalds.Kiosk.App.Views.Pages
         {
             this.NavigationService.GoBack();
         }
+
+        private void Refresh(object sender, System.EventArgs e)
+        {
+            LstProducts.Items.Clear();
+            if (_sessionKeeper != null)
+                _sessionKeeper.Session.Order.Products.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+        }
     }
 }
