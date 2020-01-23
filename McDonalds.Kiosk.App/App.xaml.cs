@@ -48,6 +48,7 @@ namespace McDonalds.Kiosk.App
             services.AddTransient<MainWindow>();
             services.AddTransient<Idle>();
             services.AddTransient<DuringOrder>();
+            services.AddTransient<OrderList>();
         }
     }
 }

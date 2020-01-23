@@ -14,17 +14,22 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row ="0">
-            <ListView Margin="30,10,30,10" BorderBrush="Green" BorderThickness="3">
-
+            <ListView Name="LstProducts" ItemsSource="{Binding}" Initialized="LstProducts_Initialized" Margin="30,10,30,10" BorderBrush="Green" BorderThickness="3">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Cena" DisplayMemberBinding="{Binding Price}"/>
+                    </GridView>
+                </ListView.View>
             </ListView>
         </Grid>
 
 
         <Grid Grid.Row="1">
             <Button Content="Zakończ i płać" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="-160,0,0,0" VerticalAlignment="Center" Height="35"
-            Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" />
+            Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="EndAndPay" />
             <Button Content="Powrót do sklepu" HorizontalAlignment="Center" FontFamily="Century Gothic" Margin="160,0,0,0" VerticalAlignment="Center" Height="35"
-            Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" />
+            Width="100" BorderThickness="3" BorderBrush="Green" Background="DarkSeaGreen" Click="GoToShop" />
         </Grid>
 
     </Grid>
