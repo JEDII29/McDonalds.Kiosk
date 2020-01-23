@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace McDonalds.Kiosk.DatabaseContext.Migrations.MySqlMigrations
 {
     [DbContext(typeof(KioskMySqlContext))]
-    [Migration("20200123220742_Init")]
+    [Migration("20200123223239_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,8 +78,8 @@ namespace McDonalds.Kiosk.DatabaseContext.Migrations.MySqlMigrations
             modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.DrinkEntity", b =>
                 {
                     b.HasOne("McDonalds.Kiosk.DatabaseContext.Entities.ProductIdEntity", "ProductId")
-                        .WithMany("Drinks")
-                        .HasForeignKey("Id")
+                        .WithOne("Drink")
+                        .HasForeignKey("McDonalds.Kiosk.DatabaseContext.Entities.DrinkEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -87,8 +87,8 @@ namespace McDonalds.Kiosk.DatabaseContext.Migrations.MySqlMigrations
             modelBuilder.Entity("McDonalds.Kiosk.DatabaseContext.Entities.FoodEntity", b =>
                 {
                     b.HasOne("McDonalds.Kiosk.DatabaseContext.Entities.ProductIdEntity", "ProductId")
-                        .WithMany("Food")
-                        .HasForeignKey("Id")
+                        .WithOne("Food")
+                        .HasForeignKey("McDonalds.Kiosk.DatabaseContext.Entities.FoodEntity", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
