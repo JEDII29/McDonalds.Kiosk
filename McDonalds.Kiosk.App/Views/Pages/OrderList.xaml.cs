@@ -27,14 +27,14 @@ namespace McDonalds.Kiosk.App.Views.Pages
         {
             LstProducts.Items.Clear();
             if(_sessionKeeper != null)
-            _sessionKeeper.Session.Order.Products.ForEach(x => LstProducts.Items.Add(new{x.Name,x.Price}));
+            _sessionKeeper.Session.Order.ProductsIds.ForEach(x => LstProducts.Items.Add(new{x.Name,x.Price}));
         }
 
 
         private void EndAndPay(object sender, System.Windows.RoutedEventArgs e)
         {
             StreamWriter file = new StreamWriter("Paragon.txt");
-            foreach (var product in _sessionKeeper.Session.Order.Products)
+            foreach (var product in _sessionKeeper.Session.Order.ProductsIds)
             {
                 string combine = $"{product.Name} cena: {product.Price}";
                 file.WriteLine(combine);
@@ -54,7 +54,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
         {
             LstProducts.Items.Clear();
             if (_sessionKeeper != null)
-                _sessionKeeper.Session.Order.Products.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+                _sessionKeeper.Session.Order.ProductsIds.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
         }
     }
 }

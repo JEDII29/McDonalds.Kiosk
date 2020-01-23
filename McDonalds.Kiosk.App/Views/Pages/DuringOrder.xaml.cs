@@ -23,9 +23,8 @@ namespace McDonalds.Kiosk.App.Views.Pages
         private readonly OrderList _orderlist;
         private readonly SessionKeeper _sessionKeeper;
         
-        
-
-        public DuringOrder(KioskMySqlContext dbContext, ISessionManager sessionManager, OrderList orderList, SessionKeeper sessionKeeper)
+        public DuringOrder(KioskMySqlContext dbContext, 
+            ISessionManager sessionManager, OrderList orderList, SessionKeeper sessionKeeper)
         {
             InitializeComponent();
             _dbContext = dbContext;
@@ -38,35 +37,35 @@ namespace McDonalds.Kiosk.App.Views.Pages
         {
             var burgers = _dbContext.Food.GetBurgers().ToList();
             LstProducts.Items.Clear();
-            burgers.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+            burgers.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
         }
 
         private void GetSides(object sender, RoutedEventArgs e)
         {
             var sides = _dbContext.Food.GetSides().ToList();
             LstProducts.Items.Clear();
-            sides.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+            sides.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
         }
 
         private void GetWraps(object sender, RoutedEventArgs e)
         {
             var wraps = _dbContext.Food.GetWraps().ToList();
             LstProducts.Items.Clear();
-            wraps.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+            wraps.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
         }
 
         private void GetColdDrinks(object sender, RoutedEventArgs e)
         {
             var coldDrinks = _dbContext.Drinks.GetColdDrinks().ToList();
             LstProducts.Items.Clear();
-            coldDrinks.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+            coldDrinks.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
         }
 
         private void GetHotDrinks(object sender, RoutedEventArgs e)
         {
             var hotDrinks = _dbContext.Drinks.GetHotDrinks().ToList();
             LstProducts.Items.Clear();
-            hotDrinks.ForEach(x => LstProducts.Items.Add(new { x.Name, x.Price }));
+            hotDrinks.ForEach(x => LstProducts.Items.Add(new Product(x.Id, x.Name, x.Price)));
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
@@ -83,29 +82,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
 
         private void Add(object sender, RoutedEventArgs e)
         {
-            if(LstProducts.SelectedItem != null)
-            {
-                Foodd foodd = new Foodd();
-                string name = "", pricetxt = "";
-                string a = LstProducts.SelectedItem.ToString();
-                for (int i = 9; i < 32; i++)
-                {
-                    if (a[i] == ',')
-                        break;
-                    name += a[i];
-                }
-                for (int i = a.Length - 3; i > 0; i--)
-                {
-                    if (a[i] == ' ')
-                        break;
-                    pricetxt = a[i] + pricetxt;
-                }
-
-                foodd.Name = name;
-                foodd.Price = Convert.ToDouble(pricetxt);
-                _sessionKeeper.Session.Order.Products.Add(foodd);
-                TotalCost.Text = _sessionKeeper.Session.Order.Products.GetTotalCost().ToString();
-            }
+           
 
         }
         
