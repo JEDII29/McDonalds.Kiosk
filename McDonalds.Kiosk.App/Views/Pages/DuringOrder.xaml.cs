@@ -96,5 +96,7 @@ namespace McDonalds.Kiosk.App.Views.Pages
 
         private void TotalCost_Initialized(object sender, System.EventArgs e)
             => TotalCost.Text = "0";
+
+
     }
 }
