@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Runtime;
 
 namespace McDonalds.Kiosk.Core.Models
 {
@@ -9,6 +10,7 @@ namespace McDonalds.Kiosk.Core.Models
         public Session()
         {
             SessionId = new Guid();
+            SessionId = Guid.NewGuid();
             Order = new Order();
         }
 

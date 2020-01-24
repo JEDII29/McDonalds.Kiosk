@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Controls;
 using McDonalds.Kiosk.Core;
 using McDonalds.Kiosk.Core.Contracts;
 using McDonalds.Kiosk.Core.Models;
+using McDonalds.Kiosk.Core.Extensions;
 
 namespace McDonalds.Kiosk.App.Views.Pages
 {
@@ -23,13 +25,22 @@ namespace McDonalds.Kiosk.App.Views.Pages
 
         private void EndAndPay(object sender, System.Windows.RoutedEventArgs e)
         {
-            using (var file = new StreamWriter("Paragon.txt"))
+            if (_sessionKeeper.Session.Order.Products.Count == 0)
+                return;
+            using (var file = new StreamWriter("Paragon.txt", true))
             {
+                var currentTime = DateTime.Now;
+
+                var combine = $"Zamówienie: nr {_sessionKeeper.Session.SessionId} Data: {currentTime}";
+                file.WriteLine(combine);
                 foreach (var product in _sessionKeeper.Session.Order.Products)
                 {
-                    var combine = $"{product.Name} cena: {product.Price}";
+                    combine = $"{product.Name} cena: {product.Price}";
                     file.WriteLine(combine);
                 }
+                var TotalCost = _sessionKeeper.Session.Order.Products.GetTotalCost();
+                file.WriteLine($"Koszt zamówienia: {TotalCost} ");
+                file.WriteLine();
                 _sessionManager.Close();
 
                 NavigationService.GoBack();
